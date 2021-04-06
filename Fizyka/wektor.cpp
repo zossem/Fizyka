@@ -34,7 +34,7 @@ cWektor cWektor::DodawanieWektorow(vector <cWektor> Skladowe)
         wsk++;
     }
 
-    Wartosc=sqrt(WspWekZ*WspWekZ+sqrt(WspWekX*WspWekX+WspWekY*WspWekY));
+    Wartosc=sqrt(WspWekZ*WspWekZ+(WspWekX*WspWekX+WspWekY*WspWekY));
 
     cWektor rezultat(WspPunktuX, WspPunktuY, WspPunktuZ, WspWekX, WspWekY, WspWekZ, Wartosc);
     return rezultat;
@@ -42,7 +42,7 @@ cWektor cWektor::DodawanieWektorow(vector <cWektor> Skladowe)
 
 void cWektor::Wypisz()
 {
-    printf("Wektor [%lf;%lf;%lf] zaczepiony w punkcie xyz(%lf;%lf;%lf) o wartosci:%lf\n", m_WspWektoraX, m_WspWektoraY, m_WspWektoraZ, m_WspPunktuX, m_WspPunktuY, m_WspPunktuZ, m_Wartosc);
+    printf("Wektor [%le;%le;%le]\nzaczepiony w punkcie xyz(%le;%le;%le)\no wartosci:%le\n", m_WspWektoraX, m_WspWektoraY, m_WspWektoraZ, m_WspPunktuX, m_WspPunktuY, m_WspPunktuZ, m_Wartosc);
 }
 
 double cWektor::WspPunktuX(){return m_WspPunktuX;}

@@ -1,4 +1,6 @@
 #include <iostream>
+#include "wektor.h"
+#define STALA_GRAWITACJI 6.67E-11
 
 using namespace std;
 
@@ -11,7 +13,16 @@ public:
 
     cMasaKulistoSymetryczna(double Masa=5.98E24, double RPromien=6.37E6, double WspX=0.0, double WspY=0.0, double WspZ=0.0);
 
-    void wypisz();
+    cWektor SilaGrawitacji(cMasaKulistoSymetryczna Masa);
+    cWektor NatezeniePolaGrawitacyjnego(cMasaKulistoSymetryczna Masa);
+    double EnergiaPotencjalna(cMasaKulistoSymetryczna Masa);
+    double PotencjalGrawitacyjny(cMasaKulistoSymetryczna Masa);
+    double PierwszaPredkoscKosmiczna();
+    double DrugaPredkoscKosmiczna();
+    double SzybkoscOrbitowania(cMasaKulistoSymetryczna Masa);
+
+
+    void Wypisz();
 
     double Masa();
     double RPromien();
