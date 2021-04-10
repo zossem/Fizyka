@@ -19,9 +19,10 @@ public:
     double PotencjalGrawitacyjny(cMasaKulistoSymetryczna Masa);
     double PierwszaPredkoscKosmiczna();
     double DrugaPredkoscKosmiczna();
+    double SzybkoscOrbitowaniaPlanety(cMasaKulistoSymetryczna Masa);
     double SzybkoscOrbitowania(cMasaKulistoSymetryczna Masa);
 
-
+    void Wpisz();
     void Wypisz();
 
     double Masa();

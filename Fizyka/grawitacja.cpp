@@ -68,29 +68,101 @@ cWektor cMasaKulistoSymetryczna::NatezeniePolaGrawitacyjnego(cMasaKulistoSymetry
 
 double cMasaKulistoSymetryczna::EnergiaPotencjalna(cMasaKulistoSymetryczna Masa)
 {
-
+    double Odleglosc=sqrt((m_WspZ-Masa.WspZ())*(m_WspZ-Masa.WspZ())+((m_WspX-Masa.WspX())*(m_WspX-Masa.WspX())+(m_WspY-Masa.WspY())*(m_WspY-Masa.WspY())));
+    double EnergiaPotencjalna;
+    EnergiaPotencjalna=(-1)*STALA_GRAWITACJI*m_Masa*Masa.Masa()/Odleglosc;
+    return EnergiaPotencjalna;
 }
 
 double cMasaKulistoSymetryczna::PotencjalGrawitacyjny(cMasaKulistoSymetryczna Masa)
 {
-
+    double Ep=EnergiaPotencjalna(Masa);
+    double Potencjal=Ep/Masa.Masa();
+    return Potencjal;
 }
 
 double cMasaKulistoSymetryczna::PierwszaPredkoscKosmiczna()
 {
-
+    if(m_RPromien>0)
+    {
+        double PierwszaPredkoscKosmiczna=sqrt(STALA_GRAWITACJI*m_Masa/m_RPromien);
+        return PierwszaPredkoscKosmiczna;
+    }
+    else
+    {
+        return -1;
+    }
 }
 
 double cMasaKulistoSymetryczna::DrugaPredkoscKosmiczna()
 {
+    double DrugaPredkoscKosmiczna=PierwszaPredkoscKosmiczna()*sqrt(2);
+    if(DrugaPredkoscKosmiczna>0)
+    {
+        return DrugaPredkoscKosmiczna;
+    }
+    else
+    {
+        return -1;
+    }
+}
 
+double cMasaKulistoSymetryczna::SzybkoscOrbitowaniaPlanety(cMasaKulistoSymetryczna Masa)
+{
+    double Odleglosc=sqrt((m_WspZ-Masa.WspZ())*(m_WspZ-Masa.WspZ())+((m_WspX-Masa.WspX())*(m_WspX-Masa.WspX())+(m_WspY-Masa.WspY())*(m_WspY-Masa.WspY())));
+    double XSrodkaMasy=Odleglosc*m_Masa/(m_Masa+Masa.Masa());
+    double Predkosc=sqrt(m_Masa*STALA_GRAWITACJI*(Odleglosc-XSrodkaMasy)/(Odleglosc*Odleglosc));
+    return Predkosc;
 }
 
 double cMasaKulistoSymetryczna::SzybkoscOrbitowania(cMasaKulistoSymetryczna Masa)
 {
-
+    double Odleglosc=sqrt((m_WspZ-Masa.WspZ())*(m_WspZ-Masa.WspZ())+((m_WspX-Masa.WspX())*(m_WspX-Masa.WspX())+(m_WspY-Masa.WspY())*(m_WspY-Masa.WspY())));
+    if(m_RPromien>0)
+    {
+        double Predkosc=sqrt(STALA_GRAWITACJI*m_Masa/Odleglosc);
+        return Predkosc;
+    }
+    else
+    {
+        return -1;
+    }
 }
 
+void cMasaKulistoSymetryczna::Wpisz()
+{
+    double Masa, RPromien, WspX, WspY, WspZ;
+    printf("Podaj mase obiektu: ");
+    scanf("%lf", &Masa);
+    printf("\nPodaj promien obiektu: ");
+    scanf("%lf", &RPromien);
+    printf("\nPodaj wspolzedna x obiektu: ");
+    scanf("%lf", &WspX);
+    printf("\nPodaj wspolzedna y obiektu: ");
+    scanf("%lf", &WspY);
+    printf("\nPodaj wspolzedna z obiektu: ");
+    scanf("%lf", &WspZ);
+    if(Masa>0)
+    {
+        m_Masa=Masa;
+    }
+    else
+    {
+        printf("Masa obiektu musi byc wieksza od zera\n");
+    }
+    if(RPromien>=0)
+    {
+        m_RPromien=RPromien;
+    }
+    else
+    {
+        printf("Promien obiektu musi byc rowny lub wiekszy od zera\n");
+        exit(2);
+    }
+    m_WspX=WspX;
+    m_WspY=WspY;
+    m_WspZ=WspZ;
+}
 
 void cMasaKulistoSymetryczna::Wypisz()
 {
