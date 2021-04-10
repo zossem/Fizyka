@@ -1,6 +1,6 @@
 #include <iostream>
 #include "grawitacja.h"
-#include "wektor.h"
+
 
 
 using namespace std;
@@ -8,11 +8,14 @@ using namespace std;
 
 int main()
 {
-    cMasaKulistoSymetryczna Ksiezyc(7.347673E22, 1737000, 384399000, 0, 0);
+    cMasaKulistoSymetryczna herbatniki(7.34, 0, 3E9, 4E9, 12E9);
     cMasaKulistoSymetryczna Ziemia;
-    cWektor SilaG;
-    SilaG=Ziemia.SilaGrawitacji(Ksiezyc);
+    cWektor SilaG, NatezeniePola;
+    SilaG=Ziemia.SilaGrawitacji(herbatniki);
     SilaG.Wypisz();
+
+    NatezeniePola=Ziemia.NatezeniePolaGrawitacyjnego(herbatniki);
+    NatezeniePola.Wypisz();
 
     return 0;
 }

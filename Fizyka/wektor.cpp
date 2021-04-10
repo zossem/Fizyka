@@ -40,6 +40,17 @@ cWektor cWektor::DodawanieWektorow(vector <cWektor> Skladowe)
     return rezultat;
 }
 
+cWektor cWektor::Dzielenie(double dzielnik)
+{
+    double Wartosc=m_Wartosc/dzielnik;
+    double WspWektoraX=m_WspWektoraX/dzielnik;
+    double WspWektoraY=m_WspWektoraY/dzielnik;
+    double WspWektoraZ=m_WspWektoraZ/dzielnik;
+
+    cWektor rezultat(m_WspPunktuX, m_WspPunktuY, m_WspPunktuZ, WspWektoraX, WspWektoraY, WspWektoraZ, Wartosc);
+    return rezultat;
+}
+
 void cWektor::Wypisz()
 {
     printf("Wektor [%le;%le;%le]\nzaczepiony w punkcie xyz(%le;%le;%le)\no wartosci:%le\n", m_WspWektoraX, m_WspWektoraY, m_WspWektoraZ, m_WspPunktuX, m_WspPunktuY, m_WspPunktuZ, m_Wartosc);

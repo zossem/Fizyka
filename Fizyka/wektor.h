@@ -11,6 +11,7 @@ class cWektor
 public:
     cWektor(double WspPunktuX=0.0, double WspPunktuY=0.0, double WspPunktuZ=0.0, double WspWektoraX=0.0, double WspWektoraY=0.0, double WspWektoraZ=0.0, double Wartosc=0.0);
     cWektor DodawanieWektorow(vector <cWektor> Skladowe);
+    cWektor Dzielenie(double dzielnik);
 
     void Wypisz();
 

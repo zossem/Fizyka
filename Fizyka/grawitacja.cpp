@@ -2,6 +2,7 @@
 #include <math.h>
 #include "grawitacja.h"
 
+
 using namespace std;
 
 cMasaKulistoSymetryczna::cMasaKulistoSymetryczna(double Masa, double RPromien, double WspX, double WspY, double WspZ)
@@ -57,7 +58,12 @@ cWektor cMasaKulistoSymetryczna::SilaGrawitacji(cMasaKulistoSymetryczna Masa)
 
 cWektor cMasaKulistoSymetryczna::NatezeniePolaGrawitacyjnego(cMasaKulistoSymetryczna Masa)
 {
+    cWektor Fg;
+    Fg=SilaGrawitacji(Masa);
+    cWektor rezultat;
+    rezultat=Fg.Dzielenie(Masa.Masa());
 
+    return rezultat;
 }
 
 double cMasaKulistoSymetryczna::EnergiaPotencjalna(cMasaKulistoSymetryczna Masa)
