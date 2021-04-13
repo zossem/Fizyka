@@ -1,6 +1,7 @@
 #include <iostream>
 #include "wektor.h"
 #define STALA_GRAWITACJI 6.67E-11
+#define DOKLADNOSC 0.0001
 
 using namespace std;
 

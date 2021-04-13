@@ -36,21 +36,42 @@ cWektor cMasaKulistoSymetryczna::SilaGrawitacji(cMasaKulistoSymetryczna Masa)
     double WspPunktuX=Masa.WspX();
     double WspPunktuY=Masa.WspY();
     double WspPunktuZ=Masa.WspZ();
+    double WspWektoraX, WspWektoraY, WspWektoraZ;
+    double a, e, c;
+    if(abs(Masa.WspX()-m_WspX)<DOKLADNOSC)
+    {
+        if(abs(Masa.WspY()-m_WspY)<DOKLADNOSC)
+        {
+            WspWektoraX=0;
+            WspWektoraY=0;
+            WspWektoraZ=Wartosc;
+        }
+        else
+        {
+            c=(Masa.WspZ()-m_WspZ)/(Masa.WspY()-m_WspY);
+            WspWektoraX=0;
+            WspWektoraY=abs(Wartosc/sqrt(1+c*c));
+            WspWektoraZ=abs(WspWektoraY*c);
+        }
+    }
+    else
+    {
+        //y=ax+b z=cy+d z=ex+f
+        a=(Masa.WspY()-m_WspY)/(Masa.WspX()-m_WspX);
+        e=(Masa.WspZ()-m_WspZ)/(Masa.WspX()-m_WspX);
 
-    double a, e; //y=ax+b z=cy+d z=ex+f
-    a=(Masa.WspY()-m_WspY)/(Masa.WspX()-m_WspX);
-    e=(Masa.WspZ()-m_WspZ)/(Masa.WspX()-m_WspX);
+        WspWektoraX=abs(Wartosc/sqrt(e*e+a*a+1));
+        WspWektoraY=abs(WspWektoraX*a);
+        WspWektoraZ=abs(WspWektoraX*e);
+    }
 
-    double WspWektoraX=abs(Wartosc/sqrt(e*e+a*a+1));
-    double WspWektoraY=abs(WspWektoraX*a);
-    double WspWektoraZ=abs(WspWektoraX*e);
+        if(Masa.WspX()>m_WspX)
+            WspWektoraX*=(-1);
+        if(Masa.WspY()>m_WspY)
+            WspWektoraY*=(-1);
+        if(Masa.WspZ()>m_WspZ)
+            WspWektoraZ*=(-1);
 
-    if(Masa.WspX()>m_WspX)
-        WspWektoraX*=(-1);
-    if(Masa.WspY()>m_WspY)
-        WspWektoraY*=(-1);
-    if(Masa.WspZ()>m_WspZ)
-        WspWektoraZ*=(-1);
 
     cWektor rezultat(WspPunktuX, WspPunktuY, WspPunktuZ, WspWektoraX, WspWektoraY, WspWektoraZ, Wartosc);
     return rezultat;
