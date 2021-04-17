@@ -20,7 +20,7 @@ int main()
     cMasaKulistoSymetryczna MasaProbna;
     for(;;)
     {
-        printf("Wybieraj co chcesz policzyc.\n");
+        printf("Wszystkie wartosci w jednostkach podstawowych ukladu SI.\n");
 
         printf("Czy uklad sklada sie z maksymalnie dwuch cial(nie-0, tak-1)?\n");
         scanf("%d", &wybor);
