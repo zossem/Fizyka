@@ -3,12 +3,42 @@
 #include <stdio.h>
 #include<cstdlib>
 
-
-
 using namespace std;
 
+void grawitacja();
 
 int main()
+{
+    int wybor;
+    for(;;)
+    {
+        printf("Z jakiego dzialu chcesz liczyc?\n");
+        printf("1. Grawitacja\n");
+        printf("9. Wyjdz\n");
+        scanf("%d", &wybor);
+        switch(wybor)
+        {
+            case 1:
+            {
+                system("cls");
+                grawitacja();
+                break;
+            }
+            case 9:
+            {
+                exit(0);
+            }
+            default:
+            {
+                printf("Brak takiej opcji\n");
+                break;
+            }
+        }
+    }
+    return 0;
+}
+
+void grawitacja()
 {
     vector<cMasaKulistoSymetryczna> uklad;
     vector<cMasaKulistoSymetryczna> ::iterator iter, wskaznik;
@@ -22,7 +52,7 @@ int main()
     {
         printf("Wszystkie wartosci w jednostkach podstawowych ukladu SI.\n");
 
-        printf("Czy uklad sklada sie z maksymalnie dwuch cial(nie-0, tak-1)?\n");
+        printf("Czy uklad sklada sie z maksymalnie dwuch cial(nie-0, tak-1, wyjdz z grawitacji-2)?\n");
         scanf("%d", &wybor);
         if(wybor==0)
         {
@@ -59,7 +89,7 @@ int main()
                     Odpowiedz=Odpowiedz.DodawanieWektorow(wektory_skladowe);
                     Odpowiedz.Wypisz();
 
-                    printf("Kliknij enter aby kontynuwac.\n");
+                    printf("\nKliknij enter aby kontynuwac.\n");
                     wektory_skladowe.clear();
                     break;
                }
@@ -88,7 +118,7 @@ int main()
                     Odpowiedz=Odpowiedz.DodawanieWektorow(wektory_skladowe);
                     Odpowiedz.Wypisz();
 
-                    printf("Kliknij enter aby kontynuwac.\n");
+                    printf("\nKliknij enter aby kontynuwac.\n");
                     wektory_skladowe.clear();
                     break;
                }
@@ -115,7 +145,7 @@ int main()
                     }
                     printf("Energia potencjalna ukladu to: %e\n", wynik);
 
-                    printf("Kliknij enter aby kontynuwac.\n");
+                    printf("\nKliknij enter aby kontynuwac.\n");
                     break;
                }
                case 4:
@@ -143,23 +173,22 @@ int main()
                     }
 
                     printf("%e\n", wynik);
-                    printf("Kliknij enter aby kontynuwac.\n");
+                    printf("\nKliknij enter aby kontynuwac.\n");
                     break;
                }
                default:
                {
                    printf("Nie mam takiej opcji\n");
-                   printf("Kliknij enter aby kontynuwac.\n");
+                   printf("\nKliknij enter aby kontynuwac.\n");
                    break;
                }
            }
-
            uklad.clear();
            getchar();
            getchar();
            system("cls");
         }
-        else
+        else if(wybor==1)
         {
            printf("Gowny obiekt obecnie to: ");
            ObiektGowny.Wypisz();
@@ -181,7 +210,7 @@ int main()
                {
                    system("cls");
                    ObiektGowny.Wpisz();
-                   printf("Kliknij enter i kontynuwac.\n");
+                   printf("\nKliknij enter i kontynuwac.\n");
                    break;
                }
                case 2:
@@ -191,7 +220,7 @@ int main()
                    MasaProbna.Wpisz();
                    Wektor=ObiektGowny.SilaGrawitacji(MasaProbna);
                    Wektor.Wypisz();
-                   printf("Kliknij enter aby kontynuwac.\n");
+                   printf("\nKliknij enter aby kontynuwac.\n");
                    break;
                }
                case 3:
@@ -201,7 +230,7 @@ int main()
                    MasaProbna.Wpisz();
                    Wektor=ObiektGowny.NatezeniePolaGrawitacyjnego(MasaProbna);
                    Wektor.Wypisz();
-                   printf("Kliknij enter aby kontynuwac.\n");
+                   printf("\nKliknij enter aby kontynuwac.\n");
                    break;
                }
                case 4:
@@ -211,7 +240,7 @@ int main()
                    MasaProbna.Wpisz();
                    wynik=ObiektGowny.EnergiaPotencjalna(MasaProbna);
                    printf("%e", wynik);
-                   printf("Kliknij enter aby kontynuwac.\n");
+                   printf("\nKliknij enter aby kontynuwac.\n");
                    break;
                }
                case 5:
@@ -221,7 +250,7 @@ int main()
                    MasaProbna.Wpisz();
                    wynik=ObiektGowny.PotencjalGrawitacyjny(MasaProbna);
                    printf("%e", wynik);
-                   printf("Kliknij enter aby kontynuwac.\n");
+                   printf("\nKliknij enter aby kontynuwac.\n");
                    break;
                }
                case 6:
@@ -229,7 +258,7 @@ int main()
                    system("cls");
                    wynik=ObiektGowny.PierwszaPredkoscKosmiczna();
                    printf("%e", wynik);
-                   printf("Kliknij enter aby kontynuwac.\n");
+                   printf("\nKliknij enter aby kontynuwac.\n");
                    break;
                }
                case 7:
@@ -237,7 +266,7 @@ int main()
                    system("cls");
                    wynik=ObiektGowny.DrugaPredkoscKosmiczna();
                    printf("%e", wynik);
-                   printf("Kliknij enter aby kontynuwac.\n");
+                   printf("\nKliknij enter aby kontynuwac.\n");
                    break;
                }
                case 8:
@@ -247,7 +276,7 @@ int main()
                    MasaProbna.Wpisz();
                    wynik=ObiektGowny.SzybkoscOrbitowania(MasaProbna);
                    printf("%e", wynik);
-                   printf("Kliknij enter aby kontynuwac.\n");
+                   printf("\nKliknij enter aby kontynuwac.\n");
                    break;
                }
                case 9:
@@ -257,13 +286,13 @@ int main()
                    MasaProbna.Wpisz();
                    wynik=ObiektGowny.SzybkoscOrbitowaniaPlanety(MasaProbna);
                    printf("%e", wynik);
-                   printf("Kliknij enter aby kontynuwac.\n");
+                   printf("\nKliknij enter aby kontynuwac.\n");
                    break;
                }
                default:
                {
                    printf("Nie mam takiej opcji\n");
-                   printf("Kliknij enter aby kontynuwac.\n");
+                   printf("\nKliknij enter aby kontynuwac.\n");
                    break;
                }
 
@@ -273,7 +302,10 @@ int main()
            getchar();
            system("cls");
         }
+        else
+        {
+            system("cls");
+            break;
+        }
     }
-
-    return 0;
 }
